@@ -10,34 +10,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout do código
       - name: 📥 Checkout code
         uses: actions/checkout@v2
 
-      # 2. Configuração do Node.js
       - name: 🔧 Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '18.x'
 
-      # 3. Instalação do Railway CLI
       - name: 📦 Install Railway CLI
         run: npm install -g @railway/cli
 
-      # 4. Injeção do token Railway
       - name: 🔐 Inject Railway Token
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
         run: echo "Token injetado com sucesso."
 
-      # 5. Instala dependências do projeto
       - name: 📥 Install dependencies
         run: npm ci
 
-      # 6. Build do front-end (ou projeto JS)
       - name: 🔨 Build project
         run: npm run build
 
-      # 7. Deploy via Railway (raiz do projeto)
       - name: 🚀 Deploy to Railway
         run: railway up
