@@ -1,11 +1,14 @@
+[nixpacks]
+version = "1.24.0"   # versão estável conhecida
+
 [phases.setup]
-nixPkgs = ['nodejs_18', 'nodePackages.npm']
+nixPkgs = ["nodejs_18"]
 
 [phases.install]
-cmds = ['npm ci']
+cmds = ["npm ci"]
 
 [phases.build]
-cmds = ['npm run build']
+cmds = ["npm run build"]
 
 [start]
-cmd = 'npm run start'
+cmd = "npm run start"
